@@ -44,6 +44,28 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
   const callbackName = 'cb_' + Date.now();
   const script = document.createElement('script');
 
+  // Update tombol berdasarkan status iuran
+const btnDownload = document.getElementById('btn-download');
+const badgeBayar = document.getElementById('profile-bayar');
+
+if(userData.iuran === 'Lunas') {
+  badgeBayar.className = 'badge-lunas';
+  badgeBayar.innerText = 'Lunas';
+  btnDownload.disabled = false;
+  btnDownload.innerHTML = '<i class="fa-solid fa-file-arrow-down"></i> Download Sertifikat';
+  btnDownload.onclick = () => window.open(userData.linkSertifikat, '_blank');
+} else {
+  badgeBayar.className = 'badge-belum';
+  badgeBayar.innerText = 'Belum';
+  btnDownload.disabled = true;
+  btnDownload.innerHTML = '<i class="fa-solid fa-ban"></i> Sertifikat Belum Tersedia';
+}
+
+// Tombol Kirim Bukti - GANTI NO WA
+document.getElementById('btn-bukti').onclick = () => {
+  const pesan = `Halo admin, saya ${userData.nama} mau kirim bukti pembayaran iuran`;
+  window.open(`https://wa.me/62xxxxxxxxxx?text=${encodeURIComponent(pesan)}`);
+}
   window[callbackName] = function(result) {
     delete window[callbackName];
     document.body.removeChild(script);
