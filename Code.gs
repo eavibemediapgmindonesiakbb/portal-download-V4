@@ -1,56 +1,46 @@
-const SHEET_ID = '1ECSoiHywcQ5RNauOxQFSX4yGuBivh2xLPMSpARDCkKw';
-const SHEET_NAME = 'data sertifikat';
-
 function doGet(e) {
-  const callback = e.parameter.callback;
-  const nik = e.parameter.nik? e.parameter.nik.toString().trim() : '';
-  const password = e.parameter.password? e.parameter.password.toString().trim() : '';
-
-  let result;
-
-  if (!nik ||!password) {
-    result = { status: 'error', message: 'NIK dan password wajib diisi' };
-  } else {
-    const sheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName(SHEET_NAME);
-    const values = sheet.getDataRange().getValues();
-    let found = false;
-
-    for (let i = 1; i < values.length; i++) {
-      const row = values[i];
-      const sheetNIK = row[0]? row[0].toString().trim() : '';
-      const sheetPass = row[7]? row[7].toString().trim() : '';
-
-      if (sheetNIK === nik && sheetPass === password) {
-        result = {
-          status: 'success',
-          data: {
-            nama: row[4] || '',
-            status: row[2] || '',
-            bayar: row[3] || '',
-            linkSertifikat: row[6] || ''
-          }
-        };
-        found = true;
-        break;
-      }
+  // Handle login dari GitHub Pages
+  if (e.parameter.action === 'login') {
+    const result = cekLogin(e.parameter.nik, e.parameter.password);
+    
+    // JSONP biar ga kena CORS
+    const callback = e.parameter.callback;
+    const output = ContentService.createTextOutput();
+    if (callback) {
+      output.setContent(callback + '(' + JSON.stringify(result) + ')');
+    } else {
+      output.setContent(JSON.stringify(result));
     }
-
-    if (!found) {
-      result = { status: 'error', message: 'NIK atau password salah' };
-    }
+    return output.setMimeType(ContentService.MimeType.JAVASCRIPT);
   }
-
-  const output = JSON.stringify(result);
-
-  if (callback) {
-    return ContentService.createTextOutput(callback + '(' + output + ')')
-     .setMimeType(ContentService.MimeType.JAVASCRIPT);
-  } else {
-    return ContentService.createTextOutput(output)
-     .setMimeType(ContentService.MimeType.JSON);
-  }
+  
+  return HtmlService.createTemplateFromFile('index')
+.evaluate()
+.setTitle('PGM Indonesia KBB')
+.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
-function doPost(e) {
-  return doGet(e);
+function cekLogin(nik, password) {
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = ss.getSheetByName('data sertifikat'); // GANTI NAMA SHEET LO
+    const data = sheet.getDataRange().getValues();
+    
+    for (let i = 1; i < data.length; i++) {
+      if (String(data[i][0]).trim() == String(nik).trim() && String(data[i][1]).trim() == String(password).trim()) {
+        return {
+          success: true,
+          nama: data[i][2],
+          nik: data[i][0],
+          status: data[i][3],
+          iuran: data[i][4],
+          linkSertifikat: data[i][5],
+          foto: data[i][6] || 'https://i.pravatar.cc/40'
+        };
+      }
+    }
+    return {success: false, pesan: 'NIK atau password salah'};
+  } catch(err) {
+    return {success: false, pesan: 'Error server: ' + err};
+  }
 }
