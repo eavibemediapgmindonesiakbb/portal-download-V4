@@ -1,4 +1,4 @@
-<!-- DASHBOARD USER -->
+<!-- DASHBOARD USER - V5 BERSIH -->
   <div id="dashboard-user" class="page hidden">
     <header class="dash-header">
       <div class="dash-title">
@@ -14,66 +14,66 @@
       </div>
     </header>
     
-    <main class="dash-content">
-      <div class="welcome-card">
-        <div>
-          <p>Assalamu'alaikum,</p>
-          <h2 id="user-name">User 👋</h2>
-          <p class="welcome-sub">Selamat datang di Sistem Data Anggota PGM Indonesia KBB</p>
+    <div class="dash-scroll">
+      <main class="dash-content">
+        <div class="welcome-card">
+          <div>
+            <p>Assalamu'alaikum,</p>
+            <h2 id="user-name">User 👋</h2>
+            <p class="welcome-sub">Selamat datang di Sistem Data Anggota PGM Indonesia KBB</p>
+          </div>
+          <img src="assets/masjid-bg.svg" class="masjid-illus">
         </div>
-        <img src="assets/masjid-bg.svg" class="masjid-illus">
-      </div>
 
-      <div class="profile-card">
-        <h4>Profil Anggota</h4>
-        <div class="profile-row"><span>Nama</span><strong id="profile-nama">-</strong></div>
-        <div class="profile-row"><span>NIK</span><strong id="profile-nik">-</strong></div>
-        <div class="profile-row"><span>Status</span><span class="badge-active" id="profile-status">-</span></div>
-        <div class="profile-row"><span>Iuran</span><span class="badge" id="profile-bayar">-</span></div>
-      </div>
-
-      <!-- 1. GRID 2 TOMBOL AJA -->
-      <div class="action-grid-2">
-        <button id="btn-validasi" class="action-btn">
-          <i class="fa-solid fa-clock"></i>Menunggu<br>Validasi
-        </button>
-        <button id="btn-bukti" class="action-btn">
-          <i class="fa-solid fa-upload"></i>Kirim Bukti<br>Pembayaran
-        </button>
-      </div>
-
-      <!-- 2. TOMBOL DOWNLOAD FULL-WIDTH -->
-      <button id="btn-download" class="btn-download-full" disabled>
-        <i class="fa-solid fa-file-arrow-down"></i> Download Sertifikat
-      </button>
-
-      <!-- 3. DONASI PENGEMBANG KAYAK GAMBAR LO -->
-      <div class="card-donasi">
-        <div class="donasi-header">
-          <span class="icon-heart">❤️</span>
-          <h4>Donasi Pengembang</h4>
+        <div class="profile-card">
+          <h4>Profil Anggota</h4>
+          <div class="profile-row"><span>Nama</span><strong id="profile-nama">-</strong></div>
+          <div class="profile-row"><span>NIK</span><strong id="profile-nik">-</strong></div>
+          <div class="profile-row"><span>Status</span><span class="badge-active" id="profile-status">-</span></div>
+          <div class="profile-row"><span>Iuran</span><span class="badge" id="profile-bayar">-</span></div>
         </div>
-        <p class="donasi-desc">
-          Dukung Pengembangan Sistem PGM<br>Indonesia KBB
-        </p>
-        <div class="dana-logo">DANA</div>
-        <div class="nomor-dana">0812XXXXXXX</div> <!-- GANTI NOMOR ASLI -->
-        <div class="atas-nama">a.n Tim Media PGM IKBB</div>
-      </div>
 
-      <button class="btn-kirim-donasi" onclick="window.open('https://link.dana.id/qr/xxxxx')">
-        💖 Kirim Donasi
-      </button>
+        <!-- 2 TOMBOL AJA -->
+        <div class="grid-2">
+          <button id="btn-validasi" class="btn-grid">
+            <i class="fa-solid fa-clock"></i>
+            <span>Menunggu<br>Validasi</span>
+          </button>
+          <button id="btn-bukti" class="btn-grid">
+            <i class="fa-solid fa-upload"></i>
+            <span>Kirim Bukti<br>Pembayaran</span>
+          </button>
+        </div>
 
-      <!-- 4. TOMBOL LOGOUT -->
-      <button class="action-btn logout-btn" style="margin-top: 16px;">
-        <i class="fa-solid fa-right-from-bracket"></i>Logout
-      </button>
+        <!-- DOWNLOAD FULL -->
+        <button id="btn-download" class="btn-full-green" disabled>
+          <i class="fa-solid fa-file-arrow-down"></i> Download Sertifikat
+        </button>
 
-      <div class="spacer-footer"></div>
-    </main>
+        <!-- DONASI PENGEMBANG -->
+        <div class="card-donasi-v5">
+          <div class="donasi-header">
+            <span>❤️</span>
+            <h4>Donasi Pengembang</h4>
+          </div>
+          <p class="donasi-desc">
+            Dukung Pengembangan Sistem PGM<br>Indonesia KBB
+          </p>
+          <div class="dana-logo">DANA</div>
+          <div class="nomor-dana">0812XXXXXXX</div>
+          <div class="atas-nama">a.n Tim Media PGM IKBB</div>
+        </div>
 
-    <!-- 5. FOOTER + LISENSI -->
+        <button class="btn-full-red" onclick="window.open('https://link.dana.id/qr/xxxxx')">
+          💖 Kirim Donasi
+        </button>
+
+        <button class="btn-logout">
+          <i class="fa-solid fa-right-from-bracket"></i>Logout
+        </button>
+      </main>
+    </div>
+
     <footer class="dash-footer">
       <div class="footer-text">Lisensi pengembang @2026 tim media pgm Indonesia</div>
     </footer>
