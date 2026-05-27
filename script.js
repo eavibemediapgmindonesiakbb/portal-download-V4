@@ -1,4 +1,4 @@
-const SCRIPT_URL = 'PASTE_URL_WEB_APP_LO_DISINI'; // GANTI INI
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxxxx/exec'; // GANTI URL WEB APP LO
 
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(() => {
@@ -29,24 +29,35 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Loading...';
     btn.disabled = true;
 
-    fetch(`${SCRIPT_URL}?action=login&nik=${nik}&password=${password}`)
-    .then(res => res.json())
-    .then(res => {
-        btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Masuk';
-        btn.disabled = false;
-        if (res.success) {
-          document.getElementById('login-page').classList.add('hidden');
-          document.getElementById('dashboard-user').classList.remove('hidden');
-          loadDashboard(res);
-        } else {
-          msg.innerText = res.pesan;
-        }
-      })
-    .catch(err => {
-        btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Masuk';
-        btn.disabled = false;
-        msg.innerText = 'Gagal konek ke server';
-      });
+    // PAKE JSONP BIAR GA CORS
+    const callbackName = 'cb_' + Math.random().toString(36).substr(2, 9);
+    const script = document.createElement('script');
+    
+    window[callbackName] = function(res) {
+      delete window[callbackName];
+      document.body.removeChild(script);
+      btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Masuk';
+      btn.disabled = false;
+      
+      if (res.success) {
+        document.getElementById('login-page').classList.add('hidden');
+        document.getElementById('dashboard-user').classList.remove('hidden');
+        loadDashboard(res);
+      } else {
+        msg.innerText = res.pesan;
+      }
+    };
+
+    script.onerror = function() {
+      delete window[callbackName];
+      document.body.removeChild(script);
+      btn.innerHTML = '<i class="fa-solid fa-right-to-bracket"></i> Masuk';
+      btn.disabled = false;
+      msg.innerText = 'Gagal konek ke server. Cek URL Apps Script.';
+    };
+
+    script.src = `${SCRIPT_URL}?action=login&nik=${encodeURIComponent(nik)}&password=${encodeURIComponent(password)}&callback=${callbackName}`;
+    document.body.appendChild(script);
   });
 });
 
