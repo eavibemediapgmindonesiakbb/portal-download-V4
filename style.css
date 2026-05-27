@@ -557,3 +557,128 @@ th {
   .features { gap: 8px; }
   .feature-item { padding: 12px 8px; }
 }
+/* GRID 2 KOLOM */
+.action-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.action-grid-2 .action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+.action-grid-2 .action-btn i { font-size: 24px; color: #059669; }
+
+/* TOMBOL DOWNLOAD FULL */
+.btn-download-full {
+  width: 100%;
+  background: #059669;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.btn-download-full:disabled {
+  background: #D1D5DB;
+  color: #6B7280;
+  cursor: not-allowed;
+}
+
+/* CARD DONASI V2 */
+.card-donasi {
+  background: #F0FDF4;
+  border: 2px solid #BBF7D0;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.donasi-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.icon-heart { font-size: 20px; }
+.donasi-header h4 {
+  color: #15803D;
+  font-size: 18px;
+  margin: 0;
+  font-weight: 700;
+}
+.donasi-desc {
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.dana-logo {
+  color: #008CEC;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.nomor-dana {
+  color: #15803D;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.atas-nama {
+  color: #6B7280;
+  font-size: 13px;
+}
+.btn-kirim-donasi {
+  width: 100%;
+  background: #EF4444;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.btn-kirim-donasi:active { background: #DC2626; }
+
+/* FOOTER */
+.dash-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #E5E7EB;
+  padding: 12px;
+  text-align: center;
+}
+.footer-text {
+  font-size: 11px;
+  color: #9CA3AF;
+}
+.spacer-footer { height: 60px; }
+
+/* BADGE LUNAS/BELUM */
+.badge-lunas { background: #D1FAE5; color: #065F46; }
+.badge-belum { background: #FEF3C7; color: #92400E; }
