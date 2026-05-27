@@ -3,82 +3,203 @@
 <head>
   <base target="_top">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    *{margin:0;box-sizing:border-box;font-family:sans-serif}
-    body{background:#059669;min-height:100vh}
- .hidden{display:none!important}
- .box{background:#fff;border-radius:20px;padding:24px;max-width:360px;margin:60px auto}
- .logo{display:block;width:70px;margin:0 auto 15px}
-    h1{color:#fff;text-align:center;font-size:20px;margin-bottom:5px}
-    h2{color:#059669;text-align:center;font-size:18px;margin-bottom:20px}
-    p.sub{color:#fff;text-align:center;font-size:13px;margin-bottom:20px}
-    input{width:100%;padding:14px;margin:8px 0;border:1px solid #ddd;border-radius:10px;font-size:16px}
-    button{width:100%;background:#059669;color:#fff;border:none;padding:15px;border-radius:10px;font-size:16px;font-weight:bold;margin-top:10px}
-    button:disabled{background:#ccc}
- .err{color:red;text-align:center;margin:10px 0;font-size:14px}
- .dash{padding:15px}
- .card{background:#fff;border-radius:15px;padding:15px;margin-bottom:12px}
- .row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eee;font-size:14px}
- .lunas{background:#d1fae5;color:#065f46;padding:3px 10px;border-radius:10px;font-size:12px}
- .belum{background:#fef3c7;color:#92400e;padding:3px 10px;border-radius:10px;font-size:12px}
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body { background: #F3F4F6; }
+   .container { max-width: 480px; margin: 0 auto; padding: 16px; }
+    
+    /* LOGIN */
+    #loginPage { display: block; }
+   .login-box { background: white; border-radius: 16px; padding: 24px; margin-top: 40px; }
+   .login-box h2 { text-align: center; color: #009688; margin-bottom: 20px; }
+   .input-group { margin-bottom: 16px; }
+   .input-group label { display: block; font-size: 14px; color: #374151; margin-bottom: 6px; }
+   .input-group input { width: 100%; padding: 12px; border: 1px solid #D1D5DB; border-radius: 8px; }
+   .btn-login { width: 100%; background: #009688; color: white; border: none; border-radius: 8px; padding: 14px; font-weight: 600; }
+
+    /* DASHBOARD */
+    #dashboard { display: none; }
+   .header { background: #009688; padding: 16px; display: flex; justify-content: space-between; align-items: center; color: white; }
+   .header-logo { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+   .header-icons { display: flex; gap: 12px; align-items: center; }
+   .avatar { width: 32px; height: 32px; border-radius: 50%; background: white; object-fit: cover; }
+    
+   .card-hijau { background: #009688; border-radius: 20px; color: white; padding: 20px; margin: 16px 0; }
+   .card-hijau h3 { font-size: 18px; margin-bottom: 4px; }
+   .card-putih { background: white; border-radius: 16px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+   .card-putih h4 { margin-bottom: 12px; color: #374151; }
+   .row-data { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #F3F4F6; }
+   .row-data:last-child { border-bottom: none; }
+   .badge { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+   .badge-aktif { background: #D1FAE5; color: #065F46; }
+   .badge-belum { background: #FEF3C7; color: #92400E; }
+   .badge-lunas { background: #D1FAE5; color: #065F46; }
+    
+   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+   .btn-menu { background: white; border: 1px solid #E5E7EB; border-radius: 12px; padding: 16px; text-align: center; cursor: pointer; }
+   .btn-menu.icon { font-size: 24px; margin-bottom: 8px; }
+   .btn-menu span { font-size: 13px; color: #374151; font-weight: 500; }
+    
+   .btn-download { width: 100%; background: #009688; color: white; border: none; border-radius: 12px; padding: 16px; font-size: 15px; font-weight: 600; margin-bottom: 16px; cursor: pointer; }
+   .btn-download:disabled { background: #D1D5DB; color: #6B7280; cursor: not-allowed; }
+    
+    /* DONASI V2 - SESUAI GAMBAR LO */
+   .card-donasi { background: #F0FDF4; border: 2px solid #BBF7D0; border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 12px; }
+   .donasi-header { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 8px; }
+   .icon-heart { font-size: 20px; }
+   .donasi-header h4 { color: #15803D; font-size: 18px; margin: 0; }
+   .donasi-desc { color: #374151; font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
+   .dana-logo { color: #008CEC; font-weight: 700; font-size: 18px; margin-bottom: 4px; }
+   .nomor-dana { color: #15803D; font-size: 24px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+   .atas-nama { color: #6B7280; font-size: 13px; }
+   .btn-kirim-donasi { width: 100%; background: #EF4444; color: white; border: none; border-radius: 12px; padding: 16px; font-size: 16px; font-weight: 600; cursor: pointer; }
+   .btn-kirim-donasi:active { background: #DC2626; }
+    
+   .navbar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #E5E7EB; padding: 12px; }
+   .btn-back { width: 100%; background: #F3F4F6; border: none; border-radius: 12px; padding: 14px; color: #374151; font-weight: 600; }
+   .footer-text { text-align:center; font-size:11px; color:#9CA3AF; margin-top:8px; }
+   .spacer { height: 100px; }
+    #loading { display: none; text-align: center; padding: 20px; }
   </style>
 </head>
 <body>
-  <div id="login">
-    <img src="https://i.ibb.co/7J7FqxQ/logo-pgm.png" class="logo">
-    <h1>PGM Indonesia<br>Bandung Barat</h1>
-    <p class="sub">Perkumpulan Guru Madrasah (PGM)</p>
-    <div class="box">
-      <h2>Selamat Datang!</h2>
-      <input id="nik" placeholder="NIK" type="number">
-      <input id="pw" type="password" placeholder="Password">
-      <div id="msg" class="err"></div>
-      <button onclick="login()" id="btn">Masuk</button>
+  <!-- LOGIN PAGE -->
+  <div id="loginPage" class="container">
+    <div class="login-box">
+      <h2>Login Anggota</h2>
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="nama@email.com">
+      </div>
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="••••••">
+      </div>
+      <button class="btn-login" onclick="login()">Masuk</button>
+      <div id="loading">Loading...</div>
     </div>
   </div>
 
-  <div id="dash" class="hidden">
-    <h1 style="margin:20px 0">Dashboard Anggota</h1>
-    <div class="dash">
-      <div class="card">
-        <h3 style="color:#059669;margin-bottom:10px">Assalamu'alaikum, <span id="nama"></span></h3>
-        <div class="row"><span>NIK</span><b id="dnik"></b></div>
-        <div class="row"><span>Status</span><b id="dstatus"></b></div>
-        <div class="row"><span>Iuran</span><span id="diuran"></span></div>
+  <!-- DASHBOARD -->
+  <div id="dashboard">
+    <div class="header">
+      <div class="header-logo">🕌 <span>PGM Indonesia KBB</span></div>
+      <div class="header-icons">
+        <span>🔔</span>
+        <img id="fotoUser" class="avatar" src="">
       </div>
-      <div class="card">
-        <button id="btnDown" disabled>Download Sertifikat</button>
-        <button onclick="logout()" style="background:#ef4444;margin-top:8px">Logout</button>
+    </div>
+
+    <div class="container">
+      <div class="card-hijau">
+        <h3 id="salam">Assalamu'alaikum, USER 👋</h3>
+        <p>Selamat datang kembali</p>
       </div>
+
+      <div class="card-putih">
+        <h4>Profil Anggota</h4>
+        <div class="row-data"><span>Nama</span><strong id="namaUser">-</strong></div>
+        <div class="row-data"><span>NIK</span><strong id="nikUser">-</strong></div>
+        <div class="row-data"><span>Status</span><span class="badge badge-aktif" id="statusUser">Aktif</span></div>
+        <div class="row-data"><span>Iuran</span><span class="badge" id="iuranUser">Belum</span></div>
+      </div>
+
+      <!-- 2 TOMBOL AJA -->
+      <div class="grid-2">
+        <button class="btn-menu" onclick="alert('Fitur validasi admin')">
+          <div class="icon">⏳</div>
+          <span>Menunggu<br>Validasi</span>
+        </button>
+        <button class="btn-menu" id="btnBukti">
+          <div class="icon">📤</div>
+          <span>Kirim Bukti<br>Pembayaran</span>
+        </button>
+      </div>
+
+      <!-- TOMBOL DOWNLOAD FULL -->
+      <button id="btnSertifikat" class="btn-download" disabled>
+        📄 Download Sertifikat
+      </button>
+
+      <!-- DONASI V2 -->
+      <div class="card-donasi">
+        <div class="donasi-header">
+          <span class="icon-heart">❤️</span>
+          <h4>Donasi Pengembang</h4>
+        </div>
+        <p class="donasi-desc">
+          Dukung Pengembangan Sistem PGM<br>Indonesia KBB
+        </p>
+        <div class="dana-logo">DANA</div>
+        <div class="nomor-dana">0812XXXXXXX</div> <!-- GANTI NOMOR ASLI -->
+        <div class="atas-nama">a.n Tim Media PGM IKBB</div>
+      </div>
+
+      <button class="btn-kirim-donasi" onclick="window.open('https://link.dana.id/qr/xxxxx')">
+        💖 Kirim Donasi
+      </button>
+
+      <div class="spacer"></div>
+    </div>
+
+    <div class="navbar">
+      <button class="btn-back" onclick="logout()">← Back ke Awal</button>
+      <div class="footer-text">Lisensi pengembang @2026 tim media pgm Indonesia</div>
     </div>
   </div>
 
-<script>
-function login(){
-  const n=nik.value,p=pw.value;
-  msg.innerText='';btn.innerText='Loading...';btn.disabled=true;
-  google.script.run.withSuccessHandler(r=>{
-    btn.innerText='Masuk';btn.disabled=false;
-    if(r.s){
-      login.classList.add('hidden');
-      dash.classList.remove('hidden');
-      nama.innerText=r.n;dnik.innerText=r.nik;dstatus.innerText=r.st;
-      if(r.i=='Lunas'){
-        diuran.className='lunas';diuran.innerText='Lunas';
-        btnDown.disabled=false;btnDown.onclick=()=>window.open(r.l);
-      }else{
-        diuran.className='belum';diuran.innerText='Belum';
-        btnDown.disabled=true;
+  <script>
+    function login() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      document.getElementById('loading').style.display = 'block';
+      
+      google.script.run.withSuccessHandler(function(res) {
+        document.getElementById('loading').style.display = 'none';
+        if(res.success) {
+          document.getElementById('loginPage').style.display = 'none';
+          document.getElementById('dashboard').style.display = 'block';
+          loadDashboard(res);
+        } else {
+          alert(res.pesan);
+        }
+      }).cekLogin(email, password);
+    }
+
+    function loadDashboard(data) {
+      document.getElementById('salam').innerText = `Assalamu'alaikum, ${data.nama} 👋`;
+      document.getElementById('namaUser').innerText = data.nama;
+      document.getElementById('nikUser').innerText = data.nik;
+      if(data.foto) document.getElementById('fotoUser').src = data.foto;
+      
+      const iuranEl = document.getElementById('iuranUser');
+      const btnSertif = document.getElementById('btnSertifikat');
+      
+      if(data.iuran === 'Lunas') {
+        iuranEl.className = 'badge badge-lunas';
+        iuranEl.innerText = 'Lunas';
+        btnSertif.disabled = false;
+        btnSertif.onclick = () => window.open(data.linkSertifikat, '_blank');
+      } else {
+        iuranEl.className = 'badge badge-belum';
+        iuranEl.innerText = 'Belum';
+        btnSertif.disabled = true;
+        btnSertif.innerText = '📄 Sertifikat Belum Tersedia';
       }
-    }else{msg.innerText=r.p}
-  }).cekLogin(n,p);
-}
-function logout(){
-  dash.classList.add('hidden');
-  login.classList.remove('hidden');
-  nik.value='';pw.value='';
-}
-</script>
+
+      // GANTI NOMOR WA ADMIN
+      document.getElementById('btnBukti').onclick = () => {
+        const pesan = `Halo admin, saya ${data.nama} mau kirim bukti pembayaran iuran`;
+        window.open(`https://wa.me/62xxxxxxxxxx?text=${encodeURIComponent(pesan)}`);
+      }
+    }
+
+    function logout() {
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('loginPage').style.display = 'block';
+      document.getElementById('email').value = '';
+      document.getElementById('password').value = '';
+    }
+  </script>
 </body>
 </html>
