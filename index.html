@@ -1,205 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <base target="_top">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-    body { background: #F3F4F6; }
-   .container { max-width: 480px; margin: 0 auto; padding: 16px; }
-    
-    /* LOGIN */
-    #loginPage { display: block; }
-   .login-box { background: white; border-radius: 16px; padding: 24px; margin-top: 40px; }
-   .login-box h2 { text-align: center; color: #009688; margin-bottom: 20px; }
-   .input-group { margin-bottom: 16px; }
-   .input-group label { display: block; font-size: 14px; color: #374151; margin-bottom: 6px; }
-   .input-group input { width: 100%; padding: 12px; border: 1px solid #D1D5DB; border-radius: 8px; }
-   .btn-login { width: 100%; background: #009688; color: white; border: none; border-radius: 8px; padding: 14px; font-weight: 600; }
-
-    /* DASHBOARD */
-    #dashboard { display: none; }
-   .header { background: #009688; padding: 16px; display: flex; justify-content: space-between; align-items: center; color: white; }
-   .header-logo { display: flex; align-items: center; gap: 8px; font-weight: 600; }
-   .header-icons { display: flex; gap: 12px; align-items: center; }
-   .avatar { width: 32px; height: 32px; border-radius: 50%; background: white; object-fit: cover; }
-    
-   .card-hijau { background: #009688; border-radius: 20px; color: white; padding: 20px; margin: 16px 0; }
-   .card-hijau h3 { font-size: 18px; margin-bottom: 4px; }
-   .card-putih { background: white; border-radius: 16px; padding: 16px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-   .card-putih h4 { margin-bottom: 12px; color: #374151; }
-   .row-data { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #F3F4F6; }
-   .row-data:last-child { border-bottom: none; }
-   .badge { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; }
-   .badge-aktif { background: #D1FAE5; color: #065F46; }
-   .badge-belum { background: #FEF3C7; color: #92400E; }
-   .badge-lunas { background: #D1FAE5; color: #065F46; }
-    
-   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-   .btn-menu { background: white; border: 1px solid #E5E7EB; border-radius: 12px; padding: 16px; text-align: center; cursor: pointer; }
-   .btn-menu.icon { font-size: 24px; margin-bottom: 8px; }
-   .btn-menu span { font-size: 13px; color: #374151; font-weight: 500; }
-    
-   .btn-download { width: 100%; background: #009688; color: white; border: none; border-radius: 12px; padding: 16px; font-size: 15px; font-weight: 600; margin-bottom: 16px; cursor: pointer; }
-   .btn-download:disabled { background: #D1D5DB; color: #6B7280; cursor: not-allowed; }
-    
-    /* DONASI V2 - SESUAI GAMBAR LO */
-   .card-donasi { background: #F0FDF4; border: 2px solid #BBF7D0; border-radius: 16px; padding: 20px; text-align: center; margin-bottom: 12px; }
-   .donasi-header { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 8px; }
-   .icon-heart { font-size: 20px; }
-   .donasi-header h4 { color: #15803D; font-size: 18px; margin: 0; }
-   .donasi-desc { color: #374151; font-size: 14px; line-height: 1.5; margin-bottom: 16px; }
-   .dana-logo { color: #008CEC; font-weight: 700; font-size: 18px; margin-bottom: 4px; }
-   .nomor-dana { color: #15803D; font-size: 24px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
-   .atas-nama { color: #6B7280; font-size: 13px; }
-   .btn-kirim-donasi { width: 100%; background: #EF4444; color: white; border: none; border-radius: 12px; padding: 16px; font-size: 16px; font-weight: 600; cursor: pointer; }
-   .btn-kirim-donasi:active { background: #DC2626; }
-    
-   .navbar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid #E5E7EB; padding: 12px; }
-   .btn-back { width: 100%; background: #F3F4F6; border: none; border-radius: 12px; padding: 14px; color: #374151; font-weight: 600; }
-   .footer-text { text-align:center; font-size:11px; color:#9CA3AF; margin-top:8px; }
-   .spacer { height: 100px; }
-    #loading { display: none; text-align: center; padding: 20px; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#059669">
+  <title>PGM Indonesia Bandung Barat</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+  <!-- SPLASH SCREEN -->
+  <div id="splash" class="splash-screen">
+    <div class="splash-content">
+      <img src="assets/logo-pgm.png" alt="Logo PGM" class="splash-logo">
+      <div class="spinner"></div>
+      <p>PGM Indonesia KBB</p>
+    </div>
+  </div>
+
   <!-- LOGIN PAGE -->
-  <div id="loginPage" class="container">
-    <div class="login-box">
-      <h2>Login Anggota</h2>
-      <div class="input-group">
-        <label>Email</label>
-        <input type="email" id="email" placeholder="nama@email.com">
-      </div>
-      <div class="input-group">
-        <label>Password</label>
-        <input type="password" id="password" placeholder="••••••">
-      </div>
-      <button class="btn-login" onclick="login()">Masuk</button>
-      <div id="loading">Loading...</div>
-    </div>
-  </div>
-
-  <!-- DASHBOARD -->
-  <div id="dashboard">
-    <div class="header">
-      <div class="header-logo">🕌 <span>PGM Indonesia KBB</span></div>
-      <div class="header-icons">
-        <span>🔔</span>
-        <img id="fotoUser" class="avatar" src="">
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="card-hijau">
-        <h3 id="salam">Assalamu'alaikum, USER 👋</h3>
-        <p>Selamat datang kembali</p>
+  <div id="login-page" class="page hidden">
+    <div class="login-bg"></div>
+    <div class="login-container">
+      <div class="login-header">
+        <img src="assets/logo-pgm.png" alt="Logo PGM" class="logo">
+        <h1>PGM Indonesia<br>Bandung Barat</h1>
+        <p class="subtitle">Perkumpulan Guru Madrasah (PGM)</p>
+        <div class="divider-gold"></div>
+        <p class="tagline">Bergerak Bersama Memberi Manfaat<br>Suara Guru Suara Perubahan</p>
       </div>
 
-      <div class="card-putih">
-        <h4>Profil Anggota</h4>
-        <div class="row-data"><span>Nama</span><strong id="namaUser">-</strong></div>
-        <div class="row-data"><span>NIK</span><strong id="nikUser">-</strong></div>
-        <div class="row-data"><span>Status</span><span class="badge badge-aktif" id="statusUser">Aktif</span></div>
-        <div class="row-data"><span>Iuran</span><span class="badge" id="iuranUser">Belum</span></div>
+      <div class="login-card">
+        <h2>Selamat Datang!</h2>
+        <p class="card-subtitle">Silakan masuk untuk melanjutkan</p>
+        
+        <form id="login-form">
+          <div class="input-group">
+            <i class="fa-solid fa-id-card"></i>
+            <input type="text" id="nik" placeholder="Nomor Induk Kependudukan (NIK)" required>
+          </div>
+          
+          <div class="input-group">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="button" id="toggle-password" class="toggle-pass">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+          
+          <a href="#" class="forgot-pass">Lupa Password?</a>
+          
+          <div id="login-message" class="error-msg"></div>
+          
+          <button type="submit" id="login-button" class="btn-login">
+            <i class="fa-solid fa-right-to-bracket"></i> Masuk
+          </button>
+          
+          <p class="register-text">Belum punya akun? <a href="#" id="daftar-btn">Daftar Sekarang</a></p>
+        </form>
       </div>
 
-      <!-- 2 TOMBOL AJA -->
-      <div class="grid-2">
-        <button class="btn-menu" onclick="alert('Fitur validasi admin')">
-          <div class="icon">⏳</div>
-          <span>Menunggu<br>Validasi</span>
-        </button>
-        <button class="btn-menu" id="btnBukti">
-          <div class="icon">📤</div>
-          <span>Kirim Bukti<br>Pembayaran</span>
-        </button>
-      </div>
-
-      <!-- TOMBOL DOWNLOAD FULL -->
-      <button id="btnSertifikat" class="btn-download" disabled>
-        📄 Download Sertifikat
-      </button>
-
-      <!-- DONASI V2 -->
-      <div class="card-donasi">
-        <div class="donasi-header">
-          <span class="icon-heart">❤️</span>
-          <h4>Donasi Pengembang</h4>
+      <div class="features">
+        <div class="feature-item">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h4>Data Aman</h4>
+          <p>Informasi Anda terlindungi</p>
         </div>
-        <p class="donasi-desc">
-          Dukung Pengembangan Sistem PGM<br>Indonesia KBB
-        </p>
-        <div class="dana-logo">DANA</div>
-        <div class="nomor-dana">0812XXXXXXX</div> <!-- GANTI NOMOR ASLI -->
-        <div class="atas-nama">a.n Tim Media PGM IKBB</div>
+        <div class="feature-item">
+          <i class="fa-solid fa-bolt"></i>
+          <h4>Mudah & Cepat</h4>
+          <p>Akses sistem lebih mudah</p>
+        </div>
+        <div class="feature-item">
+          <i class="fa-solid fa-circle-check"></i>
+          <h4>Terpercaya</h4>
+          <p>Digunakan oleh ribuan guru madrasah</p>
+        </div>
       </div>
-
-      <button class="btn-kirim-donasi" onclick="window.open('https://link.dana.id/qr/xxxxx')">
-        💖 Kirim Donasi
-      </button>
-
-      <div class="spacer"></div>
-    </div>
-
-    <div class="navbar">
-      <button class="btn-back" onclick="logout()">← Back ke Awal</button>
-      <div class="footer-text">Lisensi pengembang @2026 tim media pgm Indonesia</div>
     </div>
   </div>
 
-  <script>
-    function login() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      document.getElementById('loading').style.display = 'block';
-      
-      google.script.run.withSuccessHandler(function(res) {
-        document.getElementById('loading').style.display = 'none';
-        if(res.success) {
-          document.getElementById('loginPage').style.display = 'none';
-          document.getElementById('dashboard').style.display = 'block';
-          loadDashboard(res);
-        } else {
-          alert(res.pesan);
-        }
-      }).cekLogin(email, password);
-    }
+  <!-- DASHBOARD USER -->
+  <div id="dashboard-user" class="page hidden">
+    <header class="dash-header">
+      <div class="dash-title">
+        <img src="assets/logo-pgm.png" class="logo-sm">
+        <div>
+          <h3>PGM Indonesia Bandung Barat</h3>
+          <p>Perkumpulan Guru Madrasah (PGM)</p>
+        </div>
+      </div>
+      <div class="dash-profile">
+        <i class="fa-solid fa-bell"></i>
+        <img src="https://i.pravatar.cc/40" class="avatar" alt="User">
+      </div>
+    </header>
+    
+    <main class="dash-content">
+      <div class="welcome-card">
+        <div>
+          <p>Assalamu'alaikum,</p>
+          <h2 id="user-name">User 👋</h2>
+          <p class="welcome-sub">Selamat datang di Sistem Data Anggota PGM Indonesia KBB</p>
+        </div>
+        <img src="assets/masjid-bg.svg" class="masjid-illus">
+      </div>
 
-    function loadDashboard(data) {
-      document.getElementById('salam').innerText = `Assalamu'alaikum, ${data.nama} 👋`;
-      document.getElementById('namaUser').innerText = data.nama;
-      document.getElementById('nikUser').innerText = data.nik;
-      if(data.foto) document.getElementById('fotoUser').src = data.foto;
-      
-      const iuranEl = document.getElementById('iuranUser');
-      const btnSertif = document.getElementById('btnSertifikat');
-      
-      if(data.iuran === 'Lunas') {
-        iuranEl.className = 'badge badge-lunas';
-        iuranEl.innerText = 'Lunas';
-        btnSertif.disabled = false;
-        btnSertif.onclick = () => window.open(data.linkSertifikat, '_blank');
-      } else {
-        iuranEl.className = 'badge badge-belum';
-        iuranEl.innerText = 'Belum';
-        btnSertif.disabled = true;
-        btnSertif.innerText = '📄 Sertifikat Belum Tersedia';
-      }
+      <div class="profile-card">
+        <h4>Profil Anggota</h4>
+        <div class="profile-row"><span>Nama</span><strong id="profile-nama">-</strong></div>
+        <div class="profile-row"><span>NIK</span><strong id="profile-nik">-</strong></div>
+        <div class="profile-row"><span>Status</span><span class="badge-active" id="profile-status">-</span></div>
+        <div class="profile-row"><span>Iuran</span><span class="badge" id="profile-bayar">-</span></div>
+      </div>
 
-      // GANTI NOMOR WA ADMIN
-      document.getElementById('btnBukti').onclick = () => {
-        const pesan = `Halo admin, saya ${data.nama} mau kirim bukti pembayaran iuran`;
-        window.open(`https://wa.me/62xxxxxxxxxx?text=${encodeURIComponent(pesan)}`);
-      }
-    }
+      <div class="action-grid">
+        <button id="btn-download" class="action-btn" disabled><i class="fa-solid fa-ban"></i>Menunggu Validasi</button>
+        <button class="action-btn"><i class="fa-solid fa-id-card"></i>Lihat Kartu Anggota</button>
+        <button class="action-btn logout-btn"><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
+      </div>
+    </main>
+  </div>
 
-    function logout() {
-      document.getElementById('dashboard').style.display = 'none';
-      document.getElementById('loginPage').style.display = 'block';
-      document.getElementById('email').value = '';
-      document.getElementById('password').value = '';
-    }
-  </script>
+  <!-- DASHBOARD ADMIN -->
+  <div id="dashboard-admin" class="page hidden">
+    <header class="dash-header">
+      <div class="dash-title">
+        <img src="assets/logo-pgm.png" class="logo-sm">
+        <div>
+          <h3>Admin PGM KBB</h3>
+          <p>Dashboard Management</p>
+        </div>
+      </div>
+      <div class="dash-profile">
+        <img src="https://i.pravatar.cc/40" class="avatar" alt="Admin">
+      </div>
+    </header>
+
+    <main class="dash-content">
+      <div class="stats-grid">
+        <div class="stat-card"><h3 id="total-anggota">0</h3><p>Total Anggota</p></div>
+        <div class="stat-card"><h3 id="anggota-aktif">0</h3><p>Anggota Aktif</p></div>
+      </div>
+
+      <div class="action-grid">
+        <button class="action-btn"><i class="fa-solid fa-users"></i>Kelola Anggota</button>
+        <button class="action-btn"><i class="fa-solid fa-user-plus"></i>Tambah Anggota</button>
+        <button class="action-btn"><i class="fa-solid fa-certificate"></i>Generate Sertifikat</button>
+        <button class="action-btn"><i class="fa-solid fa-user-gear"></i>Ubah Role</button>
+        <button class="action-btn logout-btn"><i class="fa-solid fa-right-from-bracket"></i>Logout</button>
+      </div>
+
+      <div class="table-card">
+        <h4>Data Anggota Terbaru</h4>
+        <div class="table-wrap">
+          <table id="tabel-anggota">
+            <thead><tr><th>NIK</th><th>Nama</th><th>Role</th><th>Status</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast hidden"></div>
+  <div id="loading" class="loading-overlay hidden"><div class="spinner"></div></div>
+
+  <script src="script.js?v=20260527"></script>
 </body>
 </html>
